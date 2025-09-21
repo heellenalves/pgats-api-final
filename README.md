@@ -1,6 +1,6 @@
 # API - Cofrinho digital
 
-Esta API permite registro, login, depósito, saque e consulta de saldo em um cofrinho digital. O objetivo é servir de base para estudos de testes e automação de APIs.
+Esta API permite registro, login, depósito e consulta de saldo em um cofrinho digital. O objetivo é servir de base para estudos de testes e automação de APIs.
 
 ## Instalação
 
@@ -23,14 +23,12 @@ Esta API permite registro, login, depósito, saque e consulta de saldo em um cof
 - `POST /user/register` — Registro de usuário (username, senha)
 - `POST /user/login` — Login (retorna JWT)
 - `POST /wallet/deposit` — Depósito (JWT obrigatório)
-- `POST /wallet/withdraw` — Saque (JWT obrigatório)
 - `GET /wallet/balance` — Consulta de saldo (JWT obrigatório)
 
 ## Observações
 - O banco de dados é em memória, reinicia ao parar o servidor.
 - Não é permitido registrar usuários duplicados.
 - Não é permitido depositar valores negativos.
-- Não é permitido sacar valores maiores que o saldo.
 
 ## Testes
 - O arquivo `app.js` pode ser importado para testes automatizados (ex: Supertest).
