@@ -5,6 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha test/**/*.test.js",
+    "test-rest-external": "mocha test/rest/external/**/*.test.js",
+    "test-rest-controller": "mocha test/rest/controller/**/*.test.js",
     "start": "node server.js"
   },
   "author": "",
