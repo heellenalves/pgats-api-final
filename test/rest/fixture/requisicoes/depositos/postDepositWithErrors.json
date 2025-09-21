@@ -1,0 +1,10 @@
+[
+    {
+        "nomeDoTeste": "Valor inválido",
+        "postDeposit": {
+            "value": -1
+        },
+        "statusCode": 400,
+        "mensagemEsperada": "Valor inválido"
+    }
+]

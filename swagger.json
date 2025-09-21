@@ -1,0 +1,100 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API - Cofrinho digital",
+    "version": "1.0.0",
+    "description": "API para operações de cofrinho digital: registro, login, depósito e consulta de saldo."
+  },
+  "paths": {
+    "/user/register": {
+      "post": {
+        "summary": "Registrar novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["username", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Usuário registrado" },
+          "409": { "description": "Usuário já existe" }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "summary": "Login do usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["username", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Login bem-sucedido, retorna token JWT" },
+          "401": { "description": "Credenciais inválidas" }
+        }
+      }
+    },
+    "/wallet/deposit": {
+      "post": {
+        "summary": "Depositar valor no cofrinho",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": { "type": "number" }
+                },
+                "required": ["value"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Depósito realizado" },
+          "400": { "description": "Valor inválido" }
+        }
+      }
+    },
+    "/wallet/balance": {
+      "get": {
+        "summary": "Consultar saldo do cofrinho",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Retorna saldo atual" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
