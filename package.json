@@ -18,5 +18,8 @@
     "mocha": "^11.7.2",
     "sinon": "^21.0.0",
     "supertest": "^7.1.4"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
